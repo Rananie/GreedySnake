@@ -1,0 +1,77 @@
+// 设置变量
+@bg-color: #ffffff;
+
+// 清除默认样式
+* {
+    margin: 0;
+    padding: 0;
+    //width和height设置的是盒子的内容区
+    box-sizing: border-box;
+  }
+body {
+  font: bold 20px "Courier";
+  overflow: hidden;//解决滚动条
+}
+  
+//设置主窗口的样式
+#main {
+    width: 360px;
+    height: 420px;
+    background-color: @bg-color;
+    margin: 200px auto;//设置居中
+    border: 10px solid pink;// 设置边框
+    border-radius: 40px; // 设置圆角
+    display: flex; // 开启弹性盒模型,为了使弹性项居中      
+    flex-flow: column; // 设置主轴的方向,两个盒子从上到下垂直排列
+    align-items: center;//主轴上元素居中
+    justify-content: space-around;//空白分布在整个元素的两侧
+    //设置舞台的样式
+    #stage{
+        width: 304px;
+        height: 304px;
+        border: 2px solid pink;
+        position: relative;
+        //设置蛇的样式
+        #snake{
+            &>div{
+                width: 10px;
+                height: 10px;
+                background-color: pink;
+                border: 1px solid @bg-color;// 蛇的边框颜色和背景颜色相同
+                position: absolute;//蛇的位置会根据js改变，所以我们开启绝对定位
+            }
+            &>div:first-child{
+                background: rgb(247, 133, 152);
+            }
+           
+        }
+        //设置食物
+        #food{
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            left: 40px;
+            top: 100px;
+            display: flex;
+            flex-wrap:wrap;//可以换行
+            // 设置主轴和侧轴的空白空间分配到元素之间
+            justify-content: space-between;
+            align-content: space-between;
+            &>div{//给食物设置样式
+                width: 4px;
+                height: 4px;
+                background-color: pink; 
+                transform: rotate(45deg);// 使四个div旋转45度
+            }
+        }
+    }
+    //设置游戏记分牌
+    #score-panel{
+        color: pink;
+        width: 300px;
+        display: flex;//元素水平排列
+        justify-content: space-between;//主轴上元素的排列方式
+    }
+}
+
+
